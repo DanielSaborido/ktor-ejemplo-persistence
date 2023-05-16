@@ -1,35 +1,86 @@
 package com.example.plugins
 
 import com.example.dao.dao
-import com.example.models.*
-import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
-import io.ktor.server.http.content.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
+import com.example.dao.daoCampo
 import io.ktor.server.routing.*
+import io.ktor.server.response.*
+import io.ktor.server.http.content.*
+import io.ktor.server.application.*
+
+import io.ktor.server.freemarker.*
+import io.ktor.server.request.*
 import io.ktor.server.util.*
 
 fun Application.configureRouting() {
+    
     routing {
-        // ...
         get("/") {
             call.respondRedirect("articles")
         }
+
+        // Static plugin. Try to access `/static/index.html`
         static("/static") {
             resources("static")
         }
+
+        route("campos") {
+            get {
+                call.respond(FreeMarkerContent("indexCampo.ftl", mapOf("campos" to daoCampo.allCampos())))
+            }
+
+            get("new") {
+                call.respond(FreeMarkerContent("newCampo.ftl", model = null))
+            }
+
+            post {
+                val formParameters = call.receiveParameters()
+                val value = formParameters.getOrFail("value")
+                val name = formParameters.getOrFail("name")
+                val description = formParameters.getOrFail("description")
+                val seasonId = formParameters.getOrFail("seasonId")
+                val order = formParameters.getOrFail("order").toInt()
+                val campo = daoCampo.addNewCampos(value, name, description, seasonId, order)
+                call.respondRedirect("/campos/${campo?.id}")
+            }
+
+            get("{id}") {
+                val id = call.parameters.getOrFail<Int>("id").toInt()
+                call.respond(FreeMarkerContent("showCampo.ftl", mapOf("campo" to daoCampo.campo(id))))
+            }
+            get("{id}/edit") {
+                val id = call.parameters.getOrFail<Int>("id").toInt()
+                call.respond(FreeMarkerContent("editCampo.ftl", mapOf("campo" to daoCampo.campo(id))))
+            }
+            post("{id}") {
+                val id = call.parameters.getOrFail<Int>("id").toInt()
+                val formParameters = call.receiveParameters()
+                when (formParameters.getOrFail("_action")) {
+                    "update" -> {
+                        val formParameters = call.receiveParameters()
+                        val value = formParameters.getOrFail("value")
+                        val name = formParameters.getOrFail("name")
+                        val description = formParameters.getOrFail("description")
+                        val seasonId = formParameters.getOrFail("seasonId")
+                        val order = formParameters.getOrFail("order").toInt()
+                        daoCampo.editCampos(id, value, name, description, seasonId, order)
+                        call.respondRedirect("/campos/$id")
+                    }
+                    "delete" -> {
+                        daoCampo.deleteCampos(id)
+                        call.respondRedirect("/campos")
+                    }
+                }
+            }
+        }
+
         route("articles") {
             get {
-                // Show a list of articles
                 call.respond(FreeMarkerContent("index.ftl", mapOf("articles" to dao.allArticles())))
             }
             get("new") {
-                // Show a page with fields for creating a new article
                 call.respond(FreeMarkerContent("new.ftl", model = null))
             }
             post {
-                // Save an article
                 val formParameters = call.receiveParameters()
                 val title = formParameters.getOrFail("title")
                 val body = formParameters.getOrFail("body")
@@ -37,7 +88,6 @@ fun Application.configureRouting() {
                 call.respondRedirect("/articles/${article?.id}")
             }
             get("{id}") {
-                // Show an article with a specific id
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("show.ftl", mapOf("article" to dao.article(id))))
             }
@@ -62,5 +112,6 @@ fun Application.configureRouting() {
                 }
             }
         }
+
     }
 }

@@ -6,7 +6,16 @@ import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
+val dao: DAOFacade = DAOFacadeImpl().apply {
+    runBlocking {
+        if(allArticles().isEmpty()) {
+            addNewArticle("The drive to develop!", "...it's what keeps me going.")
+        }
+    } 
+}
+
 class DAOFacadeImpl : DAOFacade {
+
     private fun resultRowToArticle(row: ResultRow) = Article(
         id = row[Articles.id],
         title = row[Articles.title],
@@ -43,12 +52,4 @@ class DAOFacadeImpl : DAOFacade {
         Articles.deleteWhere { Articles.id eq id } > 0
     }
 
-}
-
-val dao: DAOFacade = DAOFacadeImpl().apply {
-    runBlocking {
-        if(allArticles().isEmpty()) {
-            addNewArticle("The drive to develop!", "...it's what keeps me going.")
-        }
-    }
 }
