@@ -1,6 +1,6 @@
 package com.example.models
 
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.*
 
 data class Campo(val id: Int, val value: String, val name: String, val description: String, val seasonId: String, val order: Int)
 

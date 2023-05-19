@@ -13,10 +13,10 @@
                 <textarea name="descripcion"></textarea>
             </p>
             <p>
-                <input type="submit">
+                <input type="number" name="orden">
             </p>
             <p>
-                <input type="number" name="order">
+                <input type="submit">
             </p>
         </form>
     </div>
