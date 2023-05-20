@@ -1,4 +1,5 @@
 <#-- @ftlvariable name="campo" type="com.example.models.Campo" -->
+<#-- @ftlvariable name="article" type="com.example.models.Article" -->
 <#import "_layout.ftl" as layout />
 <@layout.header>
     <div>
@@ -12,6 +13,14 @@
             </p>
             <p>
                 <textarea name="descripcion">${campo.description}</textarea>
+            </p>
+            <p>
+                <select name="idtemporada">
+                    <option value="">Seleccione una ID</option>
+                    <% for (article in articles) { %>
+                    <option value="${article.id}">${article.id}</option>
+                    <% } %>
+                </select>
             </p>
             <p>
                 <input type="number" name="orden" value="${campo.order}">

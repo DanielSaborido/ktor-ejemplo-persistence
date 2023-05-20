@@ -13,6 +13,9 @@
                 ${campo.description}
             </p>
             <p>
+                ${campo.seasonId}
+            </p>
+            <p>
                 ${campo.order}
             </p>
         </div>

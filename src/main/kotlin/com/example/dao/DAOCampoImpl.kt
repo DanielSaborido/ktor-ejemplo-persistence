@@ -10,7 +10,7 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 val daoCampo: DAOCampo = DAOCampoImpl().apply {
     runBlocking {
         if(allCampos().isEmpty()) {
-            addNewCampos("Valor", "Nombre", "Descripcion", "Nuse", 1)
+            addNewCampos("Valor", "Nombre", "Descripcion", 1, 1)
         }
     }
 }
@@ -39,7 +39,7 @@ class DAOCampoImpl : DAOCampo {
         value: String,
         name: String,
         description: String,
-        seasonId: String,
+        seasonId: Int,
         order: Int
     ): Campo? = dbQuery {
         val insertStatement = Campos.insert {
@@ -57,7 +57,7 @@ class DAOCampoImpl : DAOCampo {
         value: String,
         name: String,
         description: String,
-        seasonId: String,
+        seasonId: Int,
         order: Int
     ): Boolean = dbQuery {
         Campos.update({ Campos.id eq id }) {
