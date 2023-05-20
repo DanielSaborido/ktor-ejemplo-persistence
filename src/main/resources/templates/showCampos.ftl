@@ -16,7 +16,7 @@
         </p>
         <hr>
         <p>
-            <a href="/campos/${campo.id}/editCampo">Edit article</a>
+            <a href="/campos/${campo.id}/editCampo">Edit campo</a>
         </p>
     </div>
 </@layout.header>
