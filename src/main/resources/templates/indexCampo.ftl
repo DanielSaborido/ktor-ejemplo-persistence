@@ -4,7 +4,7 @@
     <#list campos?reverse as campo>
         <div>
             <h3>
-                <a href="/articles/${campo.id}">${campo.name}</a>
+                <a href="/campos/${campo.id}">${campo.name}</a>
             </h3>
             <p>
                 ${campo.value}
@@ -22,6 +22,6 @@
     </#list>
     <hr>
     <p>
-        <a href="/campos/newCampos">Create campo</a>
+        <a href="/campos/newCampo">Create campo</a>
     </p>
 </@layout.header>

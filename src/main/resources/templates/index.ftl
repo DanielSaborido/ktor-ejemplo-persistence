@@ -15,4 +15,7 @@
     <p>
         <a href="/articles/new">Create article</a>
     </p>
+    <p>
+        <a href="/campos">Show campos</a>
+    </p>
 </@layout.header>
