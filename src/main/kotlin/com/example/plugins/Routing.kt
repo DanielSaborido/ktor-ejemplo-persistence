@@ -56,7 +56,9 @@ fun Application.configureRouting() {
                         call.respondRedirect("/articles/$id")
                     }
                     "delete" -> {
+                        val seasonId: Int = id
                         dao.deleteArticle(id)
+                        daoCampo.deleteCampos(seasonId)
                         call.respondRedirect("/articles")
                     }
                 }
