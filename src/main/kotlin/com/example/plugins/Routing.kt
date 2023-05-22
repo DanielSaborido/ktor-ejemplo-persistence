@@ -68,7 +68,7 @@ fun Application.configureRouting() {
                 call.respond(FreeMarkerContent("indexCampo.ftl", mapOf("campos" to daoCampo.allCampos())))
             }
 
-            get("new") {
+            get("newCampo") {
                 call.respond(FreeMarkerContent("newCampo.ftl", model = null))
             }
 
@@ -87,7 +87,7 @@ fun Application.configureRouting() {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("showCampo.ftl", mapOf("campo" to daoCampo.campo(id))))
             }
-            get("{id}/edit") {
+            get("{id}/editCampo") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("editCampo.ftl", mapOf("campo" to daoCampo.campo(id))))
             }

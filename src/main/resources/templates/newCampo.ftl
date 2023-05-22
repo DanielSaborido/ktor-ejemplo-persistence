@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="article" type="com.example.models.Article" -->
+<#-- @ftlvariable name="articles" type="kotlin.collections.List<com.example.models.Article>" -->
 <#import "_layout.ftl" as layout />
 <@layout.header>
     <div>
@@ -16,9 +16,9 @@
             <p>
                 <select name="idtemporada">
                     <option value="">Seleccione una ID</option>
-                    <% for (article in articles) { %>
-                    <option value="${article.id}">${article.id}</option>
-                    <% } %>
+                    <#list articles as article>
+                        <option value="${article.id}">${article.id}</option>
+                    </#list>
                 </select>
             </p>
             <p>
