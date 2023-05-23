@@ -41,10 +41,6 @@ fun Application.configureRouting() {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("show.ftl", mapOf("article" to dao.article(id))))
             }
-            get("{id}/indexCampoArt") {
-                val seasonId = call.parameters.getOrFail<Int>("id").toInt()
-                call.respond(FreeMarkerContent("indexCampoArt.ftl", mapOf("campos" to daoCampo.campoart(seasonId))))
-            }
             get("{id}/edit") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("edit.ftl", mapOf("article" to dao.article(id))))
@@ -92,6 +88,11 @@ fun Application.configureRouting() {
             get("{id}") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("showCampo.ftl", mapOf("campo" to daoCampo.campo(id))))
+            }
+
+            get("{id}/indexCampoArt") {
+                val seasonId = call.parameters.getOrFail<Int>("id").toInt()
+                call.respond(FreeMarkerContent("indexCampoArt.ftl", mapOf("campos" to daoCampo.campoart(seasonId))))
             }
             get("{id}/editCampo") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
