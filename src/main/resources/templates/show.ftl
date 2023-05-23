@@ -12,5 +12,8 @@
         <p>
             <a href="/articles/${article.id}/edit">Edit article</a>
         </p>
+        <p>
+            <a href="/campos/indexCampoArt">Show campos</a>
+        </p>
     </div>
 </@layout.header>

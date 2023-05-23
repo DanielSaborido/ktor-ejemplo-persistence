@@ -41,12 +41,17 @@ fun Application.configureRouting() {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("show.ftl", mapOf("article" to dao.article(id))))
             }
+            get("{id}/indexCampoArt") {
+                val seasonId = call.parameters.getOrFail<Int>("id").toInt()
+                call.respond(FreeMarkerContent("indexCampoArt.ftl", mapOf("campos" to daoCampo.campoart(seasonId))))
+            }
             get("{id}/edit") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 call.respond(FreeMarkerContent("edit.ftl", mapOf("article" to dao.article(id))))
             }
             post("{id}") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
+                val seasonId: Int = id
                 val formParameters = call.receiveParameters()
                 when (formParameters.getOrFail("_action")) {
                     "update" -> {
@@ -56,7 +61,6 @@ fun Application.configureRouting() {
                         call.respondRedirect("/articles/$id")
                     }
                     "delete" -> {
-                        val seasonId: Int = id
                         dao.deleteArticle(id)
                         daoCampo.deleteCampos(seasonId)
                         call.respondRedirect("/articles")

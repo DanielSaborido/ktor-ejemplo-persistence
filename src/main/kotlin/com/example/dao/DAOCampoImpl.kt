@@ -35,6 +35,13 @@ class DAOCampoImpl : DAOCampo {
             .singleOrNull()
     }
 
+    override suspend fun campoart(seasonId: Int): Campo? = dbQuery {
+        Campos
+            .select { Campos.seasonId eq seasonId }
+            .map(::resultRowToEntity)
+            .singleOrNull()
+    }
+
     override suspend fun addNewCampos(
         value: String,
         name: String,
