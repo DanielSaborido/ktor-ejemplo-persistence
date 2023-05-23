@@ -79,4 +79,8 @@ class DAOCampoImpl : DAOCampo {
     override suspend fun deleteCampos(id: Int): Boolean = dbQuery {
         Campos.deleteWhere { Campos.id eq id } > 0
     }
+
+    override suspend fun deleteCamposArt(seasonId: Int): Boolean = dbQuery {
+        Campos.deleteWhere { Campos.seasonId eq seasonId } > 0
+    }
 }

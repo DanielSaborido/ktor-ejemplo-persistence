@@ -11,4 +11,5 @@ interface DAOCampo {
     suspend fun addNewCampos(value: String, name: String, description: String, seasonId: Int, order: Int): Campo?
     suspend fun editCampos(id: Int, value: String, name: String, description: String, seasonId: Int, order: Int): Boolean
     suspend fun deleteCampos(id: Int): Boolean
+    suspend fun deleteCamposArt(seasonId: Int): Boolean
 }
