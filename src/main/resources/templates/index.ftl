@@ -4,10 +4,10 @@
     <#list articles?reverse as article>
         <div>
             <h3>
-                <a href="/articles/${article.id}">${article.title}</a>
+                <a href="/articles/${article.id}">Titulo: ${article.title}</a>
             </h3>
             <p>
-                ${article.body}
+               Cuerpo: ${article.body}
             </p>
         </div>
     </#list>

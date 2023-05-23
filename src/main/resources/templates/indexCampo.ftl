@@ -4,19 +4,19 @@
     <#list campos?reverse as campo>
         <div>
             <h3>
-                <a href="/campos/${campo.id}">${campo.name}</a>
+                <a href="/campos/${campo.id}">Nombre: ${campo.name}</a>
             </h3>
             <p>
-                ${campo.value}
+                Valor: ${campo.value}
             </p>
             <p>
-                ${campo.description}
+                Descripcion: ${campo.description}
             </p>
             <p>
-                ${campo.seasonId}
+                Season ID: ${campo.seasonId}
             </p>
             <p>
-                ${campo.order}
+                Orden: ${campo.order}
             </p>
         </div>
     </#list>
