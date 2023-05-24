@@ -103,7 +103,6 @@ fun Application.configureRouting() {
                 val formParameters = call.receiveParameters()
                 when (formParameters.getOrFail("_action")) {
                     "update" -> {
-                        val formParameters = call.receiveParameters()
                         val value = formParameters.getOrFail("valor")
                         val name = formParameters.getOrFail("nombre")
                         val description = formParameters.getOrFail("descripcion")
