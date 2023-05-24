@@ -5,13 +5,13 @@
         <h3>Create campo</h3>
         <form action="/campos" method="post">
             <p>
-                <input type="text" name="valor">
+                <input type="text" name="valor" value="Value">
             </p>
             <p>
-                <input type="text" name="nombre">
+                <input type="text" name="nombre" value="Name">
             </p>
             <p>
-                <textarea name="descripcion"></textarea>
+                <textarea name="descripcion" value="Description"></textarea>
             </p>
             <p>
                 <select name="idtemporada">
@@ -22,7 +22,7 @@
                 </select>
             </p>
             <p>
-                <input type="number" name="orden">
+                <input type="number" name="orden" value="50">
             </p>
             <p>
                 <input type="submit">

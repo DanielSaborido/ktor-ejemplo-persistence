@@ -4,10 +4,10 @@
         <h3>Create article</h3>
         <form action="/articles" method="post">
             <p>
-                <input type="text" name="title">
+                <input type="text" name="title" value="Title">
             </p>
             <p>
-                <textarea name="body"></textarea>
+                <textarea name="body" value="Cuerpo"></textarea>
             </p>
             <p>
                 <input type="submit">
