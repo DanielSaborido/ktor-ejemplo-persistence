@@ -8,10 +8,10 @@
                 <input type="text" name="valor" value="Value">
             </p>
             <p>
-                <input type="text" name="nombre" value="Name">
+                <input type="text" name="nombre" value="Campo ">
             </p>
             <p>
-                <textarea name="descripcion" value="Description"></textarea>
+                <textarea name="descripcion" value="Description del campo   del articulo "></textarea>
             </p>
             <p>
                 <select name="idtemporada">

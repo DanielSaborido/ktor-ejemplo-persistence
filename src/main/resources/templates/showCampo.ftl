@@ -3,19 +3,19 @@
 <@layout.header>
     <div>
         <h3>
-            ${campo.name}
+            Nombre: ${campo.name}
         </h3>
         <p>
-            ${campo.value}
+            Valor: ${campo.value}
         </p>
         <p>
-            ${campo.description}
+           Descripcion: ${campo.description}
         </p>
         <p>
-            ${campo.seasonId}
+           Season ID: ${campo.seasonId}
         </p>
         <p>
-            ${campo.order}
+           Orden: ${campo.order}
         </p>
         <hr>
         <p>

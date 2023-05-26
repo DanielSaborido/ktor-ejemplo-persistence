@@ -4,10 +4,10 @@
 <@layout.header>
     <div>
         <h3>
-            ${article.title}
+           Titulo: ${article.title}
         </h3>
         <p>
-            ${article.body}
+           Cuerpo: ${article.body}
         </p>
         <h2>
             Campos relacionados:
