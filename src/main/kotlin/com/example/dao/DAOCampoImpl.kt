@@ -10,7 +10,10 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 val daoCampo: DAOCampo = DAOCampoImpl().apply {
     runBlocking {
         if(allCampos().isEmpty()) {
-            addNewCampos("Valor 1", "Campo 1", "Descripcion del campo 1 del articulo 1", 1, 10)
+            addNewCampos("Valor 1", "Campo 1 - 1", "Descripcion del campo 1 del articulo 1", 1, 10)
+            addNewCampos("Valor 1", "Campo 1 - 4", "Descripcion del campo 1 del articulo 1", 4, 100)
+            addNewCampos("Valor 1", "Campo 1 - 2", "Descripcion del campo 1 del articulo 1", 2, 15)
+            addNewCampos("Valor 1", "Campo 2 - 1", "Descripcion del campo 2 del articulo 1", 1, 50)
         }
     }
 }
