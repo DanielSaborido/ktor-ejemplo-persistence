@@ -9,7 +9,7 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 val dao: DAOFacade = DAOFacadeImpl().apply {
     runBlocking {
         if(allArticles().isEmpty()) {
-            addNewArticle("The drive to develop!", "...it's what keeps me going.")
+            addNewArticle("Articulo 1", "Descripcion del articulo 1.")
         }
     } 
 }
