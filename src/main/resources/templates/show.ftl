@@ -9,16 +9,18 @@
         <p>
            Cuerpo: ${article.body}
         </p>
-        <h2>
-            Campos relacionados:
-        </h2>
-        <#list campos?reverse as campo>
-            <div>
-                <h3>
-                    <a href="/campos/${campo.id}">Nombre: ${campo.name}</a>
-                </h3>
-            </div>
-        </#list>
+        <#if campos?size != 0>
+            <h2>
+                Campos relacionados:
+            </h2>
+            <#list campos?reverse as campo>
+                <div>
+                    <h3>
+                        <a href="/campos/${campo.id}">Nombre: ${campo.name}</a>
+                    </h3>
+                </div>
+            </#list>
+        </#if>
         <hr>
         <p>
             <a href="/articles/${article.id}/edit">Edit article</a>
