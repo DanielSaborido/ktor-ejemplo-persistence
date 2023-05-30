@@ -19,37 +19,33 @@
     <div>
         <form id="deleteForm" action="/articles/${article.id}" method="post">
             <p>
-                <input id="deleteButton" type="submit" name="_action" value="delete">
+                <button type="button" onclick="confirmDelete()">Eliminar</button>
             </p>
+            <input type="hidden" name="_action" value="delete">
         </form>
     </div>
 
     <script>
-        document.getElementById("deleteForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
+        function confirmDelete() {
             const campos = [
                 <#list campos as campo>
                 "${campo.name}"
                 </#list>
             ];
 
-            if (campos.length === 0){
-                if (confirm("¿Estas seguro de que quieres eliminar este articulo?")) {
-                    document.getElementById("deleteForm").submit();
-                }
-            }
-            else{
-                let confirmMessage = "¿Estas seguro de que quieres eliminar este articulo? Se eliminaran los siguientes campos:\n\n";
+            let confirmMessage = "¿Estás seguro de que quieres eliminar este artículo?\n";
+
+            if (campos.length > 0) {
+                confirmMessage += "Se eliminarán los siguientes campos:\n";
 
                 for (let i = 0; i < campos.length; i++) {
                     confirmMessage += campos[i] + "\n";
                 }
-
-                if (confirm(confirmMessage)) {
-                    document.getElementById("deleteForm").submit();
-                }
             }
-        });
+
+            if (confirm(confirmMessage)) {
+                document.getElementById("deleteForm").submit();
+            }
+        }
     </script>
 </@layout.header>
