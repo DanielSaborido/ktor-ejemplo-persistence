@@ -34,14 +34,21 @@
                 </#list>
             ];
 
-            let confirmMessage = "¿Estás seguro de que quieres eliminar este artículo? Se eliminarán los siguientes campos:\n\n";
-
-            for (let i = 0; i < campos.length; i++) {
-                confirmMessage += campos[i] + "\n";
+            if (campos.length === 0){
+                if (confirm("¿Estas seguro de que quieres eliminar este articulo?")) {
+                    document.getElementById("deleteForm").submit();
+                }
             }
+            else{
+                let confirmMessage = "¿Estas seguro de que quieres eliminar este articulo? Se eliminaran los siguientes campos:\n\n";
 
-            if (confirm(confirmMessage)) {
-                document.getElementById("deleteForm").submit();
+                for (let i = 0; i < campos.length; i++) {
+                    confirmMessage += campos[i] + "\n";
+                }
+
+                if (confirm(confirmMessage)) {
+                    document.getElementById("deleteForm").submit();
+                }
             }
         });
     </script>
